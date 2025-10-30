@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { SheetMusicFilters } from './SheetMusicFilters';
 import { SheetMusicGrid } from './SheetMusicGrid';
 import type { SheetMusic } from '@/lib/types';
@@ -11,23 +11,17 @@ export function SheetMusicClientPage() {
   const [instrumentFilter, setInstrumentFilter] = useState('');
   const [composerFilter, setComposerFilter] = useState('');
 
-  // Fetch data dynamically from API at runtime
   useEffect(() => {
     async function fetchData() {
-      try {
-        const res = await fetch('/api/sheet-music', { cache: 'no-store' });
-        const data = await res.json();
-        setSheetMusic(data);
-      } catch (error) {
-        console.error('Error fetching sheet music:', error);
-      }
+      const res = await fetch('/api/sheet-music', { cache: 'no-store' });
+      const data = await res.json();
+      setSheetMusic(data);
     }
     fetchData();
   }, []);
 
-  // Apply filters
   const filteredItems = useMemo(() => {
-    return sheetMusic.filter((item) => {
+    return sheetMusic.filter(item => {
       const searchMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
       const instrumentMatch = instrumentFilter ? item.instrument === instrumentFilter : true;
       const composerMatch = composerFilter ? item.composer === composerFilter : true;

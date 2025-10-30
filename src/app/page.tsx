@@ -5,7 +5,6 @@ import { Music } from 'lucide-react';
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
       <section className="text-center my-8 md:my-16 flex flex-col items-center">
         <Music className="w-16 h-16 text-primary" />
         <h1 className="text-5xl font-bold tracking-tight font-headline mt-4">
@@ -16,11 +15,9 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Recommendation Tool */}
       <RecommendationTool />
-
-      {/* Sheet Music Grid */}
-      <SheetMusicClientPage /> {/* fetches data dynamically */}
+      
+      <SheetMusicClientPage /> {/* Fetches live data */}
     </div>
   );
 }
