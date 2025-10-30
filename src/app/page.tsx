@@ -1,5 +1,7 @@
+
 import { getSheetMusic } from '@/app/actions';
 import { SheetMusicClientPage } from '@/components/SheetMusicClientPage';
+import { RecommendationTool } from '@/components/RecommendationTool';
 import { Music } from 'lucide-react';
 
 export default async function Home() {
@@ -17,6 +19,8 @@ export default async function Home() {
           music.
         </p>
       </section>
+
+      <RecommendationTool />
       
       <SheetMusicClientPage initialItems={sheetMusic} />
     </div>
